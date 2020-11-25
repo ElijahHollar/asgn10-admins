@@ -75,6 +75,8 @@
           $this->errors[] = "Username cannot be blank.";
         } elseif (!has_length($this->username, array('min' => 8, 'max' => 255))) {
           $this->errors[] = "Username must be between 8 and 255 characters.";
+        } elseif (!has_unique_username($this->username, $this->id ?? 0)) {
+          $this->errors[] = "Username not allowed. Try another.";
         }
 
         if($this->password_required) {
@@ -100,5 +102,16 @@
         }
       
         return $this->errors;
+    }
+    
+    static public function find_by_username($username) {
+      $sql = "SELECT * FROM " . static::$table_name . " ";
+      $sql .= "WHERE username=" . self::$database->quote($username);
+      $object_array = static::find_by_sql($sql);
+      if(!empty($object_array)) {
+          return array_shift($object_array);
+      }   else    {
+          return false;
       }
-}
+    }
+ }

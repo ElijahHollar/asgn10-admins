@@ -59,4 +59,18 @@ class Session {
     }
   }
 
+  public function message($msg="") {
+    if(!empty($msg)) {
+      // Then this is a "set" message
+      $_SESSION['message'] = $msg;
+      return true;
+    } else {
+      // Then this is a "get" message
+      return $_SESSION['message'] ?? '';
+    }
+  }
+
+  public function clear_message() {
+    unset($_SESSION['message']);
+  }
 }

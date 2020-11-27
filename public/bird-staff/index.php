@@ -18,6 +18,4 @@
 
 <?php include(SHARED_PATH . '/bird-staff-footer.php'); 
 
-var_dump($_SERVER['HTTP_HOST']);
-
 ?>

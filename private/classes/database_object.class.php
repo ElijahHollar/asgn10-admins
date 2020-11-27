@@ -88,7 +88,7 @@ class DatabaseObject {
     $attributes = $this->sanitized_attributes();
     $attribute_pairs = [];
     foreach($attributes as $key => $value) {
-        $attribute_pairs[] = "{$key}={$value}";
+      $attribute_pairs[] = "{$key}={$value}";
     }
 
     $sql = "UPDATE " . static::$table_name . " SET ";

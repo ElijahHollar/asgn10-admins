@@ -17,7 +17,7 @@ if(is_post_request()) {
 
   // Delete bicycle
   $result = $bird->delete();
-  $session->message('The admin was deleted successfully.');
+  $session->message('The bird was deleted successfully.');
   redirect_to(url_for('/bird-staff/views/index.php'));
 
 } else {
